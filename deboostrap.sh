@@ -60,10 +60,10 @@ if [ "$BOOTSIZE" -eq "0" ]; then
 	mkfs.ext4 -q $LOOP"p1"
 	mount $LOOP"p1" $DEST/output/sdcard/
 else
-	parted -s $LOOP -- mkpart primary fat16  $BOOTSTART"s" $BOOTEND"s"
+	parted -s $LOOP -- mkpart primary ext2  $BOOTSTART"s" $BOOTEND"s"
 	parted -s $LOOP -- mkpart primary ext4  $ROOTSTART"s" -1s
 	partprobe $LOOP
-	mkfs.vfat -n "$IMAGEVOLUME" $LOOP"p1" >/dev/null 2>&1
+	mkfs.ext2 $LOOP"p1"
 	mkfs.ext4 -q $LOOP"p2"
 	mount $LOOP"p2" $DEST/output/sdcard/
 	mkdir -p $DEST/output/sdcard/boot

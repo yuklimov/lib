@@ -144,6 +144,7 @@ REVISION="1.9"
 BOOTCONFIG="A20-OLinuXino-Lime2_defconfig" 
 MODULES="hci_uart gpio_sunxi rfcomm hidp bonding spi_sun7i 8021q a20_tp"
 MODULES_NEXT=""
+BOOTSIZE="32"
 ;;
 
 
