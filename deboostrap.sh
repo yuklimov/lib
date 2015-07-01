@@ -64,7 +64,7 @@ else
 	parted -s $LOOP -- mkpart primary ext4  $ROOTSTART"s" -1s
 	partprobe $LOOP
 	mkfs.ext2 $LOOP"p1"
-	mkfs.ext4 -q $LOOP"p2"
+	mkfs.f2fs $LOOP"p2"
 	mount $LOOP"p2" $DEST/output/sdcard/
 	mkdir -p $DEST/output/sdcard/boot
 	mount $LOOP"p1" $DEST/output/sdcard/boot
@@ -114,7 +114,7 @@ PAKETKI="alsa-utils automake btrfs-tools bash-completion bc bridge-utils bluez b
 device-tree-compiler dosfstools evtest figlet fbset fping git haveged hddtemp hdparm hostapd htop i2c-tools ifenslave-2.6 \
 iperf ir-keytable iotop iw less libbluetooth-dev libbluetooth3 libtool libwrap0-dev libfuse2 libssl-dev lirc lsof makedev \
 module-init-tools mtp-tools nano ntfs-3g ntp parted pkg-config pciutils pv python-smbus rfkill rsync screen stress sudo \
-sysfsutils toilet u-boot-tools unattended-upgrades unzip usbutils vlan wireless-tools wget wpasupplicant"
+sysfsutils toilet u-boot-tools unattended-upgrades unzip usbutils vlan wireless-tools wget wpasupplicant f2fs-tools"
 
 # generate locales and install packets
 LC_ALL=C LANGUAGE=C LANG=C chroot $DEST/output/sdcard /bin/bash -c "apt-get -y -qq install locales"
