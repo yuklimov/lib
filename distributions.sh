@@ -102,7 +102,8 @@ chroot $DEST/output/sdcard /bin/bash -c "(echo $ROOTPWD;echo $ROOTPWD;) | passwd
 chroot $DEST/output/sdcard /bin/bash -c "chage -d 0 root" 
 
 # add noatime to root FS
-echo "/dev/mmcblk0p1  /           ext4    defaults,noatime,nodiratime,data=writeback,commit=600,errors=remount-ro        0       0" >> $DEST/output/sdcard/etc/fstab
+echo "/dev/mmcblk0p2  /           f2fs    defaults,noatime,nodiratime                          0       0" >> $DEST/output/sdcard/etc/fstab
+echo "/dev/mmcblk0p1  /boot       ext2    defaults,noatime,nodiratime,errors=remount-ro        0       0" >> $DEST/output/sdcard/etc/fstab
 
 # flash media tunning
 if [ -f "$DEST/output/sdcard/etc/default/tmpfs" ]; then
