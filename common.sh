@@ -462,15 +462,15 @@ sleep 2
 # let's shrint it
 # shrinking_raw_image "$DEST/output/$VERSION.raw"
 # sleep 2
-cd $DEST/output/
-cp $SRC/lib/bin/imagewriter.exe .
+# cd $DEST/output/
+# cp $SRC/lib/bin/imagewriter.exe .
 # sign with PGP
-if [[ $GPG_PASS != "" ]] ; then
-	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes $VERSION.raw	
-	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes imagewriter.exe
-	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes readme.txt
-fi
-echo -e "[\e[0;32m ok \x1B[0m] Create and sign download ready ZIP archive"
-zip $VERSION.zip $VERSION.* readme.* imagewriter.*
-rm -f $VERSION.raw *.asc imagewriter.* readme.txt
+# if [[ $GPG_PASS != "" ]] ; then
+# 	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes $VERSION.raw	
+# 	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes imagewriter.exe
+# 	echo $GPG_PASS | gpg --passphrase-fd 0 --armor --detach-sign --batch --yes readme.txt
+# fi
+# echo -e "[\e[0;32m ok \x1B[0m] Create and sign download ready ZIP archive"
+# zip $VERSION.zip $VERSION.* readme.* imagewriter.*
+# rm -f $VERSION.raw *.asc imagewriter.* readme.txt
 }
