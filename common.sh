@@ -409,6 +409,10 @@ closing_image (){
 #--------------------------------------------------------------------------------------------------------------------------------
 # Closing image and clean-up 									            
 #--------------------------------------------------------------------------------------------------------------------------------
+
+# correct links in /boot
+chroot $DEST/output/sdcard /bin/bash -c "cd /boot; for f in *; do if [ -h \$f ]; then g=\$(realpath --relative-to=/boot \$f); ln -fs \$g \$f; fi; done"
+
 echo -e "[\e[0;32m ok \x1B[0m] Possible after install"
 chroot $DEST/output/sdcard /bin/bash -c "$AFTERINSTALL"
 chroot $DEST/output/sdcard /bin/bash -c "sync"
