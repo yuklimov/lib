@@ -460,8 +460,8 @@ mv $DEST/output/tmprootfs.raw $DEST/output/$VERSION.raw
 sync
 sleep 2
 # let's shrint it
-shrinking_raw_image "$DEST/output/$VERSION.raw"
-sleep 2
+# shrinking_raw_image "$DEST/output/$VERSION.raw"
+# sleep 2
 cd $DEST/output/
 cp $SRC/lib/bin/imagewriter.exe .
 # sign with PGP
