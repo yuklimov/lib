@@ -434,6 +434,7 @@ VERSION="${VERSION//__/_}"
 # kill process inside
 KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*ntpd" |        tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi  
 KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*dbus-daemon" | tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi  
+KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*bluetoothd" |  tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi
 
 # same info outside the image
 cp $DEST/output/sdcard/root/readme.txt $DEST/output/

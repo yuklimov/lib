@@ -161,6 +161,7 @@ umount -l $DEST/output/sdcard/sys
 # kill process inside
 KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*ntpd" |        tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi  
 KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*dbus-daemon" | tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi  
+KILLPROC=$(ps -uax | pgrep -f "qemu-arm-static.*bluetoothd" |  tail -1); if [ -n "$KILLPROC" ]; then kill -9 $KILLPROC; fi
 echo -e "[\e[0;32m ok \x1B[0m] Closing and preparing cache"
 tar czpf $DEST/output/rootfs/$RELEASE.tgz --directory=$DEST/output/sdcard/ \
 --exclude=dev/* --exclude=proc/* --exclude=run/* --exclude=tmp/* --exclude=mnt/* .
