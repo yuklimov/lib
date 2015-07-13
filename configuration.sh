@@ -159,13 +159,13 @@ MODULES_NEXT=""
 ;;
 
 
-pcduino3)
+pcduino3nano)
 #--------------------------------------------------------------------------------------------------------------------------------
-# pcduino3
+# pcduino3nano
 #--------------------------------------------------------------------------------------------------------------------------------
-REVISION="0.0"
-BOOTCONFIG="Linksprite_pcDuino3_defconfig"
-MODULES="hci_uart gpio_sunxi rfcomm hidp bonding spi_sun7i"
+REVISION="1.0"
+BOOTCONFIG="Linksprite_pcDuino3_Nano_defconfig"
+MODULES="hci_uart gpio_sunxi rfcomm hidp sunxi-ir bonding spi_sun7i"
 MODULES_NEXT=""
 ;;
 
@@ -243,7 +243,7 @@ cubox-i)
 #--------------------------------------------------------------------------------------------------------------------------------
 # cubox-i & hummingboard 3.14.xx
 #--------------------------------------------------------------------------------------------------------------------------------
-REVISION="2.8"
+REVISION="2.9"
 BOOTLOADER="https://github.com/SolidRun/u-boot-imx6"
 BOOTSOURCE="u-boot-cubox"
 BOOTCONFIG="mx6_cubox-i_config"
@@ -266,7 +266,7 @@ udoo)
 #--------------------------------------------------------------------------------------------------------------------------------
 # Udoo quad
 #--------------------------------------------------------------------------------------------------------------------------------
-REVISION="1.7"
+REVISION="1.8"
 BOOTCONFIG="udoo_quad_config"
 CPUMIN="392000"
 CPUMAX="996000"

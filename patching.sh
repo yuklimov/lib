@@ -51,6 +51,12 @@ if [[ $BRANCH == "next" && ($LINUXCONFIG == *sunxi* || $LINUXCONFIG == *cubox*) 
 		cp $SRC/lib/patch/sun7i-a20-orangepi.dts arch/arm/boot/dts/
 		cp $SRC/lib/patch/sun4i-a10.h arch/arm/boot/dts/include/dt-bindings/pinctrl
 	fi
+
+    # copy pcduino nano DTS
+	if [ "$(cat arch/arm/boot/dts/Makefile | grep sun7i-a20-pcduino3-nano)" == "" ]; then
+		sed -i 's/sun7i-a20-bananapi.dtb \\/sun7i-a20-bananapi.dtb \\\n    sun7i-a20-pcduino3-nano.dtb \\/g' arch/arm/boot/dts/Makefile
+		cp $SRC/lib/patch/sun7i-a20-pcduino3-nano.dts arch/arm/boot/dts/
+	fi
 	
 	# add r1 switch driver
 	if [ "$(patch --dry-run -t -p1 < $SRC/lib/patch/bananapi-r1-4.x.patch | grep previ)" == "" ]; then
@@ -65,10 +71,8 @@ if [[ $BRANCH == "next" && ($LINUXCONFIG == *sunxi* || $LINUXCONFIG == *cubox*) 
 fi
 
 if [[ $BRANCH == "next" && $BOARD == "udoo" ]] ; then
-	# fix DTS tree
-	if [ "$(patch --dry-run -t -p1 < $SRC/lib/patch/udoo-dts-fix.patch | grep previ)" == "" ]; then
-		patch -p1 < $SRC/lib/patch/udoo-dts-fix.patch
-	fi	
+	# hard fixed DTS tree
+	cp $SRC/lib/patch/Makefile-udoo-only arch/arm/boot/dts/Makefile
 	if [ "$(patch --dry-run -t -p1 < $SRC/lib/patch/packaging-udoo.patch | grep previ)" == "" ]; then
 		patch -p1 < $SRC/lib/patch/packaging-udoo.patch
 	fi
